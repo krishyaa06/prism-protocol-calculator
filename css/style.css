@@ -1,1 +1,255 @@
+/* ============================================
+   Prism Protocol — Quantum Terminal
+   Professional Cyberpunk Calculator Styles
+   ============================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(ellipse at 50% 0%, #0d172e 0%, #05070c 70%);
+    color: #e2e8f0;
+    padding: 20px;
+}
+
+/* Main Card */
+.terminal-card {
+    width: 100%;
+    max-width: 380px;
+    background: rgba(10, 14, 23, 0.88);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(0, 210, 255, 0.22);
+    border-radius: 22px;
+    padding: 24px;
+    box-shadow: 
+        0 0 40px rgba(0, 140, 255, 0.18),
+        0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* Header */
+.terminal-header {
+    margin-bottom: 20px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.brand-logo {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 10px #00d2ff);
+}
+
+.brand-text h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    color: #ffffff;
+}
+
+.status-badge {
+    font-size: 0.65rem;
+    color: #00d2ff;
+    letter-spacing: 1.2px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 2px;
+}
+
+.pulse {
+    width: 7px;
+    height: 7px;
+    background: #00d2ff;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #00d2ff;
+    animation: pulse 1.6s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.85); }
+}
+
+/* Mode Switcher */
+.nav-modes {
+    display: flex;
+    gap: 5px;
+    background: #090e18;
+    padding: 5px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.mode-btn {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: #64748b;
+    padding: 8px 0;
+    font-size: 0.72rem;
+    cursor: pointer;
+    border-radius: 8px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    transition: all 0.2s ease;
+}
+
+.mode-btn:hover {
+    color: #94a3b8;
+}
+
+.mode-btn.active {
+    background: linear-gradient(135deg, #0051ff, #00a2ff);
+    color: #ffffff;
+    box-shadow: 0 0 14px rgba(0, 81, 255, 0.45);
+}
+
+/* Display */
+.display-panel {
+    background: #060911;
+    border: 1px solid rgba(0, 210, 255, 0.12);
+    border-radius: 14px;
+    padding: 18px 20px;
+    text-align: right;
+    margin-bottom: 18px;
+    min-height: 90px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.history-line {
+    font-size: 0.85rem;
+    color: #64748b;
+    min-height: 1.3rem;
+    margin-bottom: 4px;
+    word-break: break-all;
+}
+
+.main-line {
+    font-size: 2.3rem;
+    font-weight: 700;
+    color: #00d2ff;
+    text-shadow: 0 0 14px rgba(0, 210, 255, 0.35);
+    overflow-x: auto;
+    white-space: nowrap;
+    letter-spacing: -0.5px;
+}
+
+/* Extra Grid (for SCI / PROG / DEFI) */
+.extra-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin-bottom: 14px;
+}
+
+.extra-grid .btn {
+    height: 42px;
+    font-size: 0.85rem;
+}
+
+/* Keypad */
+.keypad {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.btn {
+    height: 54px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: #101625;
+    color: #ffffff;
+    font-size: 1.15rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    user-select: none;
+}
+
+.btn:hover {
+    background: #161e30;
+    border-color: rgba(0, 210, 255, 0.2);
+}
+
+.btn:active {
+    transform: scale(0.96);
+}
+
+.btn-op {
+    background: #0f223f;
+    color: #00d2ff;
+}
+
+.btn-op:hover {
+    background: #14305a;
+}
+
+.btn-action {
+    background: #23121b;
+    color: #ff3b69;
+}
+
+.btn-action:hover {
+    background: #321828;
+}
+
+.btn-equal {
+    grid-column: span 2;
+    background: linear-gradient(135deg, #0051ff, #00d2ff);
+    color: #ffffff;
+    font-weight: 800;
+    letter-spacing: 1px;
+    border: none;
+    box-shadow: 0 4px 18px rgba(0, 100, 255, 0.35);
+}
+
+.btn-equal:hover {
+    filter: brightness(1.08);
+    box-shadow: 0 6px 22px rgba(0, 100, 255, 0.45);
+}
+
+.btn-zero {
+    /* keeps normal size */
+}
+
+.btn-sci-op {
+    background: #121a2e;
+    color: #a5b4fc;
+}
+
+/* Responsive */
+@media (max-width: 420px) {
+    .terminal-card {
+        padding: 18px;
+        border-radius: 18px;
+    }
+
+    .main-line {
+        font-size: 1.9rem;
+    }
+
+    .btn {
+        height: 50px;
+        font-size: 1.05rem;
+    }
+  }
 
