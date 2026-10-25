@@ -154,7 +154,7 @@ body {
 
 /* Extra Grid (for SCI / PROG / DEFI) */
 .extra-grid {
-    display: grid;
+    display: none;
     grid-template-columns: repeat(4, 1fr);
     gap: 8px;
     margin-bottom: 14px;
@@ -173,6 +173,8 @@ body {
 }
 
 .btn {
+    position: relative;
+    overflow: hidden;
     height: 54px;
     border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.05);
@@ -227,9 +229,6 @@ body {
     box-shadow: 0 6px 22px rgba(0, 100, 255, 0.45);
 }
 
-.btn-zero {
-    /* keeps normal size */
-}
 
 .btn-sci-op {
     background: #121a2e;
@@ -253,3 +252,152 @@ body {
     }
   }
 
+
+
+/* ============================================
+   Animations & ambient effects
+   ============================================ */
+
+body { overflow-x: hidden; }
+
+.bg-grid {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background-image:
+        linear-gradient(rgba(0, 210, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 210, 255, 0.05) 1px, transparent 1px);
+    background-size: 42px 42px;
+    mask-image: radial-gradient(ellipse at center, #000 20%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse at center, #000 20%, transparent 75%);
+    animation: gridDrift 24s linear infinite;
+}
+
+@keyframes gridDrift {
+    to { background-position: 42px 42px, 42px 42px; }
+}
+
+.bg-orbs { position: fixed; inset: 0; z-index: -2; overflow: hidden; }
+.bg-orbs span {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.35;
+    animation: orbFloat 16s ease-in-out infinite alternate;
+}
+.bg-orbs span:nth-child(1) { width: 360px; height: 360px; background: #0051ff; top: -80px; left: -60px; }
+.bg-orbs span:nth-child(2) { width: 300px; height: 300px; background: #00d2ff; bottom: -90px; right: -40px; animation-delay: -5s; }
+.bg-orbs span:nth-child(3) { width: 240px; height: 240px; background: #6c63ff; top: 45%; left: 55%; animation-delay: -10s; }
+
+@keyframes orbFloat {
+    0%   { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(60px, 40px) scale(1.15); }
+}
+
+.terminal-card {
+    position: relative;
+    animation: cardIn 0.7s cubic-bezier(.2, .8, .2, 1) both;
+}
+
+/* animated neon border */
+.terminal-card::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: conic-gradient(from var(--angle, 0deg), transparent 60%, #00d2ff, #6c63ff, transparent 90%);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    animation: borderSpin 6s linear infinite;
+    pointer-events: none;
+}
+
+@property --angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+@keyframes borderSpin { to { --angle: 360deg; } }
+
+@keyframes cardIn {
+    from { opacity: 0; transform: translateY(24px) scale(0.97); }
+    to   { opacity: 1; transform: none; }
+}
+
+.brand-logo { animation: logoGlow 3s ease-in-out infinite; }
+@keyframes logoGlow {
+    0%, 100% { filter: drop-shadow(0 0 6px #00d2ff); }
+    50%      { filter: drop-shadow(0 0 16px #6c63ff); }
+}
+
+.main-line { transition: font-size 0.15s ease; }
+.main-line.flash { animation: resultFlash 0.45s ease; }
+.main-line.is-error { color: #ff3b69; text-shadow: 0 0 14px rgba(255, 59, 105, 0.4); }
+
+@keyframes resultFlash {
+    0%   { opacity: 0.2; transform: translateY(6px); text-shadow: 0 0 30px #00d2ff; }
+    100% { opacity: 1;   transform: none; }
+}
+
+.extra-grid.show { display: grid; }
+.extra-grid.show > * { animation: popIn 0.3s ease both; }
+
+@keyframes popIn {
+    from { opacity: 0; transform: translateY(-6px) scale(0.95); }
+    to   { opacity: 1; transform: none; }
+}
+
+.ripple {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    margin: -6px 0 0 -6px;
+    border-radius: 50%;
+    background: rgba(0, 210, 255, 0.45);
+    pointer-events: none;
+    animation: ripple 0.5s ease-out forwards;
+}
+
+@keyframes ripple {
+    to { transform: scale(14); opacity: 0; }
+}
+
+/* DeFi rate input */
+.rate-field {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2px;
+    padding: 0 8px;
+    height: 42px;
+    border-radius: 12px;
+    background: #0a1120;
+    border: 1px solid rgba(0, 210, 255, 0.2);
+}
+.rate-field span { font-size: 0.55rem; color: #64748b; letter-spacing: 1px; }
+.rate-field input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #00d2ff;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.terminal-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 18px;
+    font-size: 0.65rem;
+    color: #64748b;
+}
+.terminal-footer a { color: #00d2ff; text-decoration: none; }
+.terminal-footer a:hover { text-decoration: underline; }
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before { animation: none !important; transition: none !important; }
+}

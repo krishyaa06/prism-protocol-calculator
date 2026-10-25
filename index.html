@@ -5,11 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prism Protocol | Quantum Terminal</title>
     <meta name="description" content="Prism Protocol Quantum Terminal — A cyberpunk multi-mode calculator supporting Standard, Scientific, Programmer and DeFi APY calculations.">
-    <link rel="stylesheet" href="css/style.css">
+    <meta name="theme-color" content="#05070c">
+    <link rel="icon" type="image/png" href="assets/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700;800&family=Orbitron:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div class="terminal-card">
+    <div class="bg-orbs" aria-hidden="true"><span></span><span></span><span></span></div>
+    <div class="bg-grid" aria-hidden="true"></div>
+
+    <main class="terminal-card">
         <!-- Branding Header -->
         <header class="terminal-header">
             <div class="brand">
@@ -34,11 +41,11 @@
         <!-- Display Area -->
         <div class="display-panel">
             <div class="history-line" id="history-display"></div>
-            <div class="main-line" id="main-display">0</div>
+            <div class="main-line" id="main-display" aria-live="polite">0</div>
         </div>
 
         <!-- Extra Controls (SCI / PROG / DEFI) -->
-        <div class="extra-grid" id="extra-grid" style="display: none;"></div>
+        <div class="extra-grid" id="extra-grid"></div>
 
         <!-- Standard Keypad -->
         <div class="keypad" id="keypad">
@@ -63,10 +70,15 @@
             <button class="btn btn-op" data-op="+">+</button>
 
             <button class="btn btn-num btn-zero">0</button>
-            <button class="btn btn-num">.</button>
+            <button class="btn btn-num btn-dot">.</button>
             <button class="btn btn-equal" id="btn-equal">=</button>
         </div>
-    </div>
+
+        <footer class="terminal-footer">
+            <span>Built by <a href="https://github.com/krishyaa06" target="_blank" rel="noopener">@krishyaa06</a></span>
+            <a href="https://dc.gg/prismprotocol" target="_blank" rel="noopener">Join Prism Protocol →</a>
+        </footer>
+    </main>
 
     <script src="js/app.js"></script>
 </body>
