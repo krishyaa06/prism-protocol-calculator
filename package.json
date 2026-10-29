@@ -1,0 +1,23 @@
+{
+  "name": "prism-protocol-calculator",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Prism Protocol | Quantum Terminal — cyberpunk multi-mode web calculator: Standard, Scientific, Programmer (HEX/BIN/OCT) and DeFi APY. Vanilla HTML, CSS & JS.",
+  "scripts": {
+    "test": "node --test",
+    "start": "npx --yes serve ."
+  },
+  "author": "Soumya Bhandare (krishyaa06)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/krishyaa06/prism-protocol-calculator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/krishyaa06/prism-protocol-calculator/issues"
+  },
+  "homepage": "https://krishyaa06.github.io/prism-protocol-calculator/",
+  "engines": {
+    "node": ">=18"
+  }
+}
